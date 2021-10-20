@@ -17,6 +17,7 @@ class LinkedList:
         while node:
             l.append(node.data)
             node = node.next_node
+        return l
 
     def print_ll(self):
         ll_string = ""
@@ -33,6 +34,8 @@ class LinkedList:
         if self.head is None:
             self.head = Node(data, None)
             self.last_node = self.head
+            return
+
         new_node = Node(data, self.head)
         self.head = new_node
 
@@ -43,3 +46,11 @@ class LinkedList:
 
         self.last_node.next_node = Node(data, None)
         self.last_node = self.last_node.next_node
+
+    def get_user_by_id(self, user_id):
+        node = self.head
+        while node:
+            if node.data["id"] is int(user_id):
+                return node.data
+            node = node.next_node
+        return None
